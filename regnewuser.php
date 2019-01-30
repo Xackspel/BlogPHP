@@ -1,10 +1,5 @@
 <?php
-    session_start();
-
-    $pdo = new PDO("mysql:host=localhost;dbname=secondmodule","root","");
-    $statement = $pdo -> query("SELECT * FROM posts");
-    $posts = $statement -> fetchall(PDO::FETCH_ASSOC);
-    var_dump($posts);  
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,16 +27,6 @@
         <br>
         <h1 class="text-center">Module #2. Home Task.</h1>
         <br>
-        <!--Post Card-->
-
-            <div class="card" style="width: 18rem;">
-                <img src="https://s3.envato.com/files/166470549/590300.jpg" class="card-img-top" alt="Code PHP">
-                <div class="card-body">
-                    <h5 class="card-title">Learning PHP</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Read this topic</a>
-                </div>
-            </div>
         
     </div>
 
