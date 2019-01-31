@@ -39,7 +39,7 @@
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $post["post_name"]?></h5>
                     <p class="card-text"><?php echo $post["post_description"]?></p>
-                    <a href="readpost.php" class="btn btn-primary">Read</a>
+                    <a href="#" class="btn btn-primary">Read</a>
                 </div>
             </div>
         <?php endforeach?>
