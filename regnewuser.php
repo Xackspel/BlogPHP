@@ -1,29 +1,18 @@
 <?php
-    session_start();
+    $FirstName = $_POST['FirstName'];
+    $SecondName = $_POST['SecondName'];
+    $Login = $_POST['Login'];
+    $Email = $_POST['Email'];
+    $Password = $_POST['Password'];
+    $RePassword = $_POST['RePassword'];
 
-    /*$pdo = new PDO("mysql:host=localhost;dbname=secondmodule","root","");
-    $statement = $pdo -> query("SELECT * FROM users");
-    $users = $statement -> fetchall(PDO::FETCH_ASSOC);*/
-    var_dump($_POST);
-    if (isset($_POST['submit'])){
-        $FirstName = $_POST['FirstName'];
-        $SecondName = $_POST['SecondName'];
-        $Login = $_POST['Login'];
-        $Email = $_POST['Email'];
-        $Password = $_POST['Password'];
-        $RePassword = $_POST['RePassword'];
-        var_dump($_POST);
-        if($Password == $RePassword){
-            $Password = md5($Password);
-            $pdo = new PDO("mysql:host=localhost;dbname=secondmodule","root","");
-            $statement = $pdo -> query("INSERT INTO users (firstname, secondname, login, email, password) VALUES ('$FirstName', '$SecondName', '$Login', '$Email', '$Password')");
-        }
-        else{
-            echo "Wrong Password, please try again.";
-        }
+    if($Password == $RePassword){
+        $Password_MD5 = MD5($Password);
+        $pdo = new PDO("mysql:host=localhost;dbname=secondmodule","root","");
+        $send_data = $pdo -> query("INSERT INTO users (Id, firstname, secondname, login, email, password, userphoto) VALUES (NULL, '$FirstName', '$SecondName', '$Login', '$Email', '$Password_MD5', '')");
     }
-    else {
-        echo "Something went wrong";
+    else{
+        var_dump($_POST);
     }
 ?>
 <!DOCTYPE html>
@@ -114,6 +103,6 @@
 </body>
 
 <!--
-    Attaching new user INSERT INTO `users` (`Id`, `name`, `secondname`, `login`, `password`, `userphoto`, `date_reg`) VALUES (NULL, 'Aleksey', 'Zhuk', 'Aleksey', MD5('f75'), '', UNIX_TIMESTAMP());
+    INSERT INTO `users` (`Id`, `firstname`, `secondname`, `login`, `email`, `password`, `userphoto`) VALUES (NULL, 'Dimka', 'Zhuk', 'Dima', 'dima@mail.com', 'f75', '');
 -->
 </html>
