@@ -1,5 +1,30 @@
 <?php
-    
+    session_start();
+
+    /*$pdo = new PDO("mysql:host=localhost;dbname=secondmodule","root","");
+    $statement = $pdo -> query("SELECT * FROM users");
+    $users = $statement -> fetchall(PDO::FETCH_ASSOC);*/
+    var_dump($_POST);
+    if (isset($_POST['submit'])){
+        $FirstName = $_POST['FirstName'];
+        $SecondName = $_POST['SecondName'];
+        $Login = $_POST['Login'];
+        $Email = $_POST['Email'];
+        $Password = $_POST['Password'];
+        $RePassword = $_POST['RePassword'];
+        var_dump($_POST);
+        if($Password == $RePassword){
+            $Password = md5($Password);
+            $pdo = new PDO("mysql:host=localhost;dbname=secondmodule","root","");
+            $statement = $pdo -> query("INSERT INTO users (firstname, secondname, login, email, password) VALUES ('$FirstName', '$SecondName', '$Login', '$Email', '$Password')");
+        }
+        else{
+            echo "Wrong Password, please try again.";
+        }
+    }
+    else {
+        echo "Something went wrong";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,38 +59,46 @@
         <div class="card bg-light">
             <article class="card-body mx-auto" style="max-width: 400px;">
                 <h4 class="card-title mt-3 text-center">Create Account</h4>
-                <form>
+                <form action="regnewuser.php" method="post">
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                         </div>
-                            <input name="Login" class="form-control" placeholder="Login" type="text">
+                            <input name="FirstName" class="form-control" placeholder="First Name" type="text" required>
                     </div>
-                    <!-- form-group// -->
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                        </div>
+                            <input name="SecondName" class="form-control" placeholder="Second Name" type="text" required>
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                        </div>
+                            <input name="Login" class="form-control" placeholder="Login" type="text" required>
+                    </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                         </div>
-                        <input name="" class="form-control" placeholder="Email address" type="email">
+                        <input name="Email" class="form-control" placeholder="Email address" type="email" required>
                     </div>  
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                         </div>
-                        <input class="form-control" placeholder="Create password" type="password">
+                        <input name="Password" class="form-control" placeholder="Create password" type="password" required>
                     </div>
-                    <!-- form-group// -->
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                         </div>
-                        <input class="form-control" placeholder="Repeat password" type="password">
-                    </div>
-                    <!-- form-group// -->                                      
+                        <input name="RePassword" class="form-control" placeholder="Repeat password" type="password" required>
+                    </div>                                      
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
-                    </div>
-                    <!-- form-group// -->      
+                        <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                    </div>      
                     <p class="text-center">Have an account? <a href="">Log In</a> </p>                                                                 
                 </form>
             </article>
