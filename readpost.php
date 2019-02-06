@@ -1,10 +1,16 @@
 <?php
     session_start();
+    $PostId = $_GET['Id'];
+    $pdo = new PDO("mysql:host=localhost;dbname=secondmodule","root",""); // Connection to Data Base.
 
-    $pdo = new PDO("mysql:host=localhost;dbname=secondmodule","root","");
-    $statement = $pdo -> query("SELECT * FROM posts");
-    $posts = $statement -> fetchall(PDO::FETCH_ASSOC);
-    //var_dump($posts);  
+    $CurrentPost = $pdo -> query("SELECT `post_id`, `post_name`, `post_description`, `post_text`, `author_id`, `post_image` FROM `posts` WHERE post_id='$PostId'"); // query to database by Post Id
+    $posts = $CurrentPost -> fetchAll(PDO::FETCH_ASSOC); 
+    //var_dump();
+    $NamePost = $posts[0]['post_name']; // Variable NamePost received Post Name from array
+    $DescriptonPost = $posts[0]['post_description']; // Variable TextPost received Text Post from array
+    $TextPost = $posts[0]['post_text'];
+    $PostImage = $posts[0]['post_image'];
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,16 +39,19 @@
         <h1 class="text-center">Module #2. Home Task.</h1>
         <br>
         <!--Post Card-->
-        <?php foreach ($posts as $post):?>
-            <div class="card" style="width: 18rem;">
-                <img src="https://s3.envato.com/files/166470549/590300.jpg" class="card-img-top" alt="Code PHP">
-                <div class="card-body">
-                    <h5 class="card-title"><?php echo $post["post_name"]?></h5>
-                    <p class="card-text"><?php echo $post["post_description"]?></p>
-                    <a href="#" class="btn btn-primary">Read</a>
-                </div>
+        <div class="card text-center">
+            <div class="card-header">
+                <img src="<?php echo $PostImage ?>" class="card-img-top" alt="Code PHP">
             </div>
-        <?php endforeach?>
+            <div class="card-body">
+                <h5 class="card-title"><?php echo $NamePost ?></h5>
+                <p class="card-text"><?php echo $DescriptonPost.'<br>'.$TextPost?></p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+            <div class="card-footer text-muted">
+                2 days ago
+            </div>
+        </div>
     </div>
 
     <br>

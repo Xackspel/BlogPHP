@@ -35,11 +35,11 @@
         <!--Post Card-->
         <?php foreach ($posts as $post):?>
             <div class="card" style="width: 18rem;">
-                <img src="https://s3.envato.com/files/166470549/590300.jpg" class="card-img-top" alt="Code PHP">
+                <img src="<?php echo $post['post_image']?>" class="card-img-top" alt="Code PHP">
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $post["post_name"]?></h5>
                     <p class="card-text"><?php echo $post["post_description"]?></p>
-                    <a href="readpost.php" class="btn btn-primary">Read</a>
+                    <button type="button" class="btn btn-dark" onclick="document.location='readpost.php?Id=<?php echo $post['post_id']?>'">Read</button>
                 </div>
             </div>
         <?php endforeach?>
