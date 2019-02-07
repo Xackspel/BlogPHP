@@ -1,9 +1,11 @@
 <?php
+    session_start();
     $Login = $_POST['Login'];
     $Password = $_POST['Password'];
     $Password_MD5 = MD5($Password);
     $pdo = new PDO("mysql:host=localhost;dbname=secondmodule","root","");
-    $select_user = $pdo -> query("SELECT `Id`, `login`, `password` FROM users WHERE login='$Login'");
+    //$select_user = $pdo -> query("SELECT `Id`, `login`, `password` FROM users WHERE login='$Login'");
+    $select_user = $pdo -> query("SELECT * FROM users WHERE login='$Login' and password='$Password_MD5'");
     $received_user = $select_user -> fetchAll(PDO::FETCH_ASSOC);
     var_dump($received_user);
 ?>
