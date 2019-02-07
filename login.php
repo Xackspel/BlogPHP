@@ -1,19 +1,11 @@
 <?php
-    $FirstName = $_POST['FirstName'];
-    $SecondName = $_POST['SecondName'];
     $Login = $_POST['Login'];
-    $Email = $_POST['Email'];
     $Password = $_POST['Password'];
-    $RePassword = $_POST['RePassword'];
-
-    if($Password == $RePassword){
-        $Password_MD5 = MD5($Password);
-        $pdo = new PDO("mysql:host=localhost;dbname=secondmodule","root","");
-        $send_data = $pdo -> query("INSERT INTO users (Id, firstname, secondname, login, email, password, userphoto) VALUES (NULL, '$FirstName', '$SecondName', '$Login', '$Email', '$Password_MD5', '')");
-    }
-    else{
-        var_dump($_POST);
-    }
+    $Password_MD5 = MD5($Password);
+    $pdo = new PDO("mysql:host=localhost;dbname=secondmodule","root","");
+    $select_user = $pdo -> query("SELECT `Id`, `login`, `password` FROM users WHERE login='$Login'");
+    $received_user = $select_user -> fetchAll(PDO::FETCH_ASSOC);
+    var_dump($received_user);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,48 +39,27 @@
     <div class="container">
         <div class="card bg-light">
             <article class="card-body mx-auto" style="max-width: 400px;">
-                <h4 class="card-title mt-3 text-center">Create Account</h4>
-                <form action="regnewuser.php" method="post">
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                        </div>
-                            <input name="FirstName" class="form-control" placeholder="First Name" type="text" required>
-                    </div>
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                        </div>
-                            <input name="SecondName" class="form-control" placeholder="Second Name" type="text" required>
-                    </div>
+                <h4 class="card-title mt-3 text-center">Log In</h4>
+                <form action="login.php" method="post">
+                    
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                         </div>
                             <input name="Login" class="form-control" placeholder="Login" type="text" required>
                     </div>
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-                        </div>
-                        <input name="Email" class="form-control" placeholder="Email address" type="email" required>
-                    </div>  
+                      
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                         </div>
-                        <input name="Password" class="form-control" placeholder="Create password" type="password" required>
+                        <input name="Password" class="form-control" placeholder="Password" type="password" required>
                     </div>
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                        </div>
-                        <input name="RePassword" class="form-control" placeholder="Repeat password" type="password" required>
-                    </div>                                      
+                                       
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                        <button type="submit" class="btn btn-primary btn-block">Log In</button>
                     </div>      
-                    <p class="text-center">Are you registered? <a href="login.php">Log In</a> </p>                                                                 
+                    <p class="text-center">Have an account? <a href="regnewuser.php">Register</a> </p>                                                                 
                 </form>
             </article>
         </div>
