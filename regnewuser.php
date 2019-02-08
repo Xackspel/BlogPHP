@@ -1,19 +1,23 @@
 <?php
-    $FirstName = $_POST['FirstName'];
-    $SecondName = $_POST['SecondName'];
-    $Login = $_POST['Login'];
-    $Email = $_POST['Email'];
-    $Password = $_POST['Password'];
-    $RePassword = $_POST['RePassword'];
+    if(isset($_POST['FirstName']) && isset($_POST['SecondName']) && isset($_POST['Login']) && isset($_POST['Email']) && isset($_POST['Password'])){
+        $FirstName = $_POST['FirstName'];
+        $SecondName = $_POST['SecondName'];
+        $Login = $_POST['Login'];
+        $Email = $_POST['Email'];
+        $Password = $_POST['Password'];
+        $RePassword = $_POST['RePassword'];
 
-    if($Password == $RePassword){
-        $Password_MD5 = MD5($Password);
-        $pdo = new PDO("mysql:host=localhost;dbname=secondmodule","root","");
-        $send_data = $pdo -> query("INSERT INTO users (Id, firstname, secondname, login, email, password, userphoto) VALUES (NULL, '$FirstName', '$SecondName', '$Login', '$Email', '$Password_MD5', '')");
-    }
-    else{
-        var_dump($_POST);
-    }
+        if($Password == $RePassword){
+            $Password_MD5 = MD5($Password);
+            $pdo = new PDO("mysql:host=localhost;dbname=secondmodule","root","");
+            $send_data = $pdo -> query("INSERT INTO users (Id, firstname, secondname, login, email, password, userphoto) VALUES (NULL, '$FirstName', '$SecondName', '$Login', '$Email', '$Password_MD5', '')");
+            echo "Congratulations, you have registered";
+        }
+        else{
+            var_dump($_POST);
+            echo "Wrong Password, please retry";
+        }
+    }   
 ?>
 <!DOCTYPE html>
 <html lang="en">
