@@ -4,7 +4,7 @@
     $pdo = new PDO("mysql:host=localhost;dbname=secondmodule","root","");
     $statement = $pdo -> query("SELECT * FROM posts");
     $posts = $statement -> fetchall(PDO::FETCH_ASSOC);
-    //var_dump($_SESSION);  
+    var_dump($_SESSION);  
 ?>
 <!DOCTYPE html>
 <html lang="en">
