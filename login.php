@@ -4,11 +4,21 @@
         $Login = $_POST['Login'];
         $Password = $_POST['Password'];
         $Password_MD5 = MD5($Password);
-        $pdo = new PDO("mysql:host=localhost;dbname=secondmodule","root","");
+
+        $pdo = new PDO("mysql:host=localhost;dbname=secondmodule","root","");// Connetction to Data Base
         
         $select_user = $pdo -> query("SELECT * FROM users WHERE login='$Login' and password='$Password_MD5'");
         $received_user = $select_user -> fetchAll(PDO::FETCH_ASSOC);
-        var_dump($received_user);
+        //$received_user =
+        if(empty($received_user)){
+            echo "Wrong Login or Password, please try again!";
+        }
+        else{
+            $_SESSION['userid'] = $received_user[0]['Id'];
+            $_SESSION['userlogin'] = $received_user[0]['login'];
+            echo "Congratulations, you have been authorized!!!";
+        }
+        //var_dump($received_user, $_SESSION);
     }
 ?>
 <!DOCTYPE html>
