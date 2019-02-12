@@ -1,10 +1,12 @@
 <?php
     session_start();
+    include 'engine.php';
+
     if(isset($_POST['Login']) && isset($_POST['Password'])){
         $Login = $_POST['Login'];
         $Password = $_POST['Password'];
         $Password_MD5 = MD5($Password);
-        $pdo = new PDO("mysql:host=localhost;dbname=secondmodule","root","");// Connetction to Data Base
+        $pdo = new PDO($MySQL_Path, $DataBaseLogin, $DataBasePass); // Connection to Data Base;
         $select_user = $pdo -> query("SELECT * FROM users WHERE login='$Login' and password='$Password_MD5'");
         $received_user = $select_user -> fetchAll(PDO::FETCH_ASSOC);
         if(empty($received_user)){
