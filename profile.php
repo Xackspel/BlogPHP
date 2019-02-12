@@ -75,10 +75,11 @@
             <div class="row">
                 <div class="col-md-auto">
                     <!--User Profile Section-->
+                    <!-- Start -->
                     <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" alt="..." class="img-thumbnail" width="200px">
                 </div>
                 <div class="col-sm">    
-                    <form action="confirmupdating.php" method="POST">
+                    <form action="user_update.php" method="POST">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">First Name &nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -89,13 +90,13 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">Second Name</span>
                             </div>
-                            <input type="text" name="Second_Name" maxlength="255" class="form-control" placeholder="<?php echo $SecondName?>" aria-label="Postname" aria-describedby="basic-addon1">
+                            <input type="text" name="Second_Name" maxlength="255" class="form-control" value="<?php echo $SecondName?>" aria-label="Postname" aria-describedby="basic-addon1">
                         </div>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <!-- I apologies for this trash =) -->
                             </div>
-                            <input name="Email" maxlength="255" class="form-control" aria-label="Postext" placeholder="<?php echo $Email?>">
+                            <input name="Email" maxlength="255" class="form-control" aria-label="Postext" value="<?php echo $Email?>">
                         </div>
                         <br>
                         <button type="submit" class="btn btn-primary">Confirm Updating</button>
