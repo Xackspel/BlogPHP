@@ -1,5 +1,8 @@
 <?php
+    include 'engine.php';
 
+    $pdo = new PDO($MySQL_Path, $DataBaseLogin, $DataBasePass); // Connection to Data Base;
+    $select_user = $pdo -> query("SELECT * FROM users WHERE login='$Login' and password='$Password_MD5'");
 ?>
 <!DOCTYPE html>
     <html lang="en">
