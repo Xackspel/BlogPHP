@@ -1,7 +1,9 @@
 <?php
     session_start();
+    include 'engine.php';
+    
     $PostId = $_GET['Id'];
-    $pdo = new PDO("mysql:host=localhost;dbname=secondmodule","root",""); // Connection to Data Base.
+    $pdo = new PDO($MySQL_Path, $DataBaseLogin, $DataBasePass); // Connection to Data Base;
     $CurrentPost = $pdo -> query("SELECT `post_id`, `post_name`, `post_description`, `post_text`, `author_id`, `post_image` FROM `posts` WHERE post_id='$PostId'"); // query to database by Post Id
     $posts = $CurrentPost -> fetchAll(PDO::FETCH_ASSOC); 
     //var_dump();
