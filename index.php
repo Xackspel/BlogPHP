@@ -1,7 +1,8 @@
 <?php
     session_start(); // Start seesion;
-
-    $pdo = new PDO("mysql:host=localhost;dbname=secondmodule","root",""); // Connection to Data Base;
+    include 'engine.php';
+    
+    $pdo = new PDO($MySQL_Path, $DataBaseLogin, $DataBasePass); // Connection to Data Base;
     $statement = $pdo -> query("SELECT * FROM posts"); // Selection all posts;
     $posts = $statement -> fetchall(PDO::FETCH_ASSOC); // Transforming posts to array;
     //var_dump($_SESSION); // Diagnostick line; For running remove // before Var_dump();
