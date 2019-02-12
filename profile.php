@@ -1,8 +1,14 @@
 <?php
+    session_start(); // Session start;
     include 'engine.php';
-
+    $User_ID = $_SESSION['userid'];
     $pdo = new PDO($MySQL_Path, $DataBaseLogin, $DataBasePass); // Connection to Data Base;
-    $select_user = $pdo -> query("SELECT * FROM users WHERE login='$Login' and password='$Password_MD5'");
+    $select_user = $pdo -> query("SELECT * FROM users WHERE Id='$User_ID'"); // Select user by Id;
+    $received_user = $select_user -> fetch(PDO::FETCH_ASSOC); // Transforming user information to array;
+    $FirstName = $received_user['firstname'];
+    $SecondName = $received_user['secondname'];
+    
+    var_dump($FirstName, $SecondName); // Diagnostic tool;
 ?>
 <!DOCTYPE html>
     <html lang="en">
@@ -21,9 +27,23 @@
                         <img src="http://marlindev.ru/img/new/logo.svg" alt="Marlin dev school" title="Marlin dev school">
                     </div>
                     <div class="col-sm">
-                        <font color="white"><h2 class="text-right" color="white">Aleksey Zhuk [ 1 ]</h2></font>
+                        <h2 class="text-right" style="color:white">
+                            <!-- Showing Congratulations or User Name if he is authorized -->
+                            <!-- Start -->
+                            <?php
+                                    if (!isset($_SESSION['userlogin'])){
+                                        echo "Wellcome!";
+                                    }
+                                    else{
+                                        echo $_SESSION['userlogin'];    
+                                    }
+                                ?>
+                            <!-- End -->
+                        </h2>
                     </div>
                 </div>
+                <!-- Navigation -->
+                <!-- Start -->
                 <nav class="navbar navbar-dark bg-dark">
                 <a class="navbar-brand" href="index.php">Home</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,9 +52,17 @@
 
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="login.php">Login</a>
-                        </li>
+                        <!--Interactive menu: Hide some links if user are not authoried-->
+                        <!-- Start -->
+                        <?php
+                            if (!isset($_SESSION['userlogin'])){
+                                echo '<li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>';
+                            }
+                            else{
+                                echo '<li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>';    
+                            }
+                        ?>
+                        <!-- End -->
                     </ul>
                 </div>
             </nav>
@@ -45,7 +73,30 @@
             <h1 class="text-center">Module #2. Home Task.</h1>
             <br>
             <!--User Profile Section-->
-            <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" alt="..." class="img-thumbnail" width="200px">                   
+            <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" alt="..." class="img-thumbnail" width="200px">
+            <form action="confirmupdating.php" method="POST">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">First Name</span>
+                </div>
+                <input name="First Name" class="form-control" value="<?php echo $FirstName?>" aria-label="Postname" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Second Name</span>
+                </div>
+                <input type="text" name="PostName" maxlength="255" class="form-control" placeholder="<?php echo $SecondName?>" aria-label="Postname" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Update Post Text &nbsp&nbsp</span>
+                </div>
+                <input name="PostText" maxlength="255" class="form-control" aria-label="Postext" placeholder="<?php echo $TextPost?>">
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Confirm Updating</button>
+            <button type="button" class="btn btn-dark" onclick="document.location='index.php'">Cancel</button>
+        </form>             
         </div>
         <br>
         <!--Bootstrap JS section-->
