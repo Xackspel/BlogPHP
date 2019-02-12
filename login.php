@@ -37,7 +37,19 @@
                     <img src="http://marlindev.ru/img/new/logo.svg" alt="Marlin dev school" title="Marlin dev school">
                 </div>
                 <div class="col-sm">
-                    <font color="white"><h2 class="text-right" color="white">Aleksey Zhuk [ 1 ]</h2></font>
+                    <h2 class="text-right" style="color:white">
+                        <!-- Showing Congratulations or User Name if he is authorized -->
+                        <!-- Start -->
+                            <?php
+                                if (!isset($_SESSION['userlogin'])){
+                                    echo "Wellcome!";
+                                }
+                                else{
+                                    echo $_SESSION['userlogin'];    
+                                }
+                            ?>
+                        <!-- End -->
+                    </h2>
                 </div>
             </div>
             <nav class="navbar navbar-dark bg-dark">
