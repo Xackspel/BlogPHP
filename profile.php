@@ -7,8 +7,8 @@
     $received_user = $select_user -> fetch(PDO::FETCH_ASSOC); // Transforming user information to array;
     $FirstName = $received_user['firstname'];
     $SecondName = $received_user['secondname'];
-    
-    var_dump($FirstName, $SecondName); // Diagnostic tool;
+    $Email = $received_user['email'];
+    //var_dump($received_user); // Diagnostic tool;
 ?>
 <!DOCTYPE html>
     <html lang="en">
@@ -72,31 +72,37 @@
             <br>
             <h1 class="text-center">Module #2. Home Task.</h1>
             <br>
-            <!--User Profile Section-->
-            <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" alt="..." class="img-thumbnail" width="200px">
-            <form action="confirmupdating.php" method="POST">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">First Name</span>
+            <div class="row">
+                <div class="col-md-auto">
+                    <!--User Profile Section-->
+                    <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" alt="..." class="img-thumbnail" width="200px">
                 </div>
-                <input name="First Name" class="form-control" value="<?php echo $FirstName?>" aria-label="Postname" aria-describedby="basic-addon1">
+                <div class="col-sm">    
+                    <form action="confirmupdating.php" method="POST">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">First Name &nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            </div>
+                            <input name="First_Name" class="form-control" value="<?php echo $FirstName?>" aria-label="Postname" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Second Name</span>
+                            </div>
+                            <input type="text" name="Second_Name" maxlength="255" class="form-control" placeholder="<?php echo $SecondName?>" aria-label="Postname" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <!-- I apologies for this trash =) -->
+                            </div>
+                            <input name="Email" maxlength="255" class="form-control" aria-label="Postext" placeholder="<?php echo $Email?>">
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Confirm Updating</button>
+                        <button type="button" class="btn btn-dark" onclick="document.location='index.php'">Cancel</button>
+                    </form>
+                </div>           
             </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Second Name</span>
-                </div>
-                <input type="text" name="PostName" maxlength="255" class="form-control" placeholder="<?php echo $SecondName?>" aria-label="Postname" aria-describedby="basic-addon1">
-            </div>
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Update Post Text &nbsp&nbsp</span>
-                </div>
-                <input name="PostText" maxlength="255" class="form-control" aria-label="Postext" placeholder="<?php echo $TextPost?>">
-            </div>
-            <br>
-            <button type="submit" class="btn btn-primary">Confirm Updating</button>
-            <button type="button" class="btn btn-dark" onclick="document.location='index.php'">Cancel</button>
-        </form>             
         </div>
         <br>
         <!--Bootstrap JS section-->
