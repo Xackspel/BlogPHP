@@ -8,7 +8,8 @@
     $FirstName = $received_user['firstname'];
     $SecondName = $received_user['secondname'];
     $Email = $received_user['email'];
-    //var_dump($received_user); // Diagnostic tool;
+    $UserPhoto = $received_user['userphoto'];
+    //var_dump($UserPhoto, $PathFiles); // Diagnostic tool;
 ?>
 <!DOCTYPE html>
     <html lang="en">
@@ -76,7 +77,20 @@
                 <div class="col-md-auto">
                     <!--User Profile Section-->
                     <!-- Start -->
-                    <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" alt="..." class="img-thumbnail" width="200px">
+                    <?
+                        if(($UserPhoto!==0)){
+                            echo '<img src="'.$PathFiles.$UserPhoto.'" alt="..." class="img-thumbnail" width="200px">';
+                        }
+                        else{
+                            echo '<img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" alt="..." class="img-thumbnail" width="200px">';
+                        }
+                    ?>
+
+                    <form action="uploadingphoto.php" method="POST" enctype="multipart/form-data">
+                        <input name="user_photo" type="file">
+                        <br><br>
+                        <button type="submit" class="btn btn-primary btn-sm">Update photo</button>
+                    </form>
                 </div>
                 <div class="col-sm">    
                     <form action="user_update.php" method="POST">
@@ -99,8 +113,8 @@
                             <input name="Email" maxlength="255" class="form-control" aria-label="Postext" value="<?php echo $Email?>">
                         </div>
                         <br>
-                        <button type="submit" class="btn btn-primary">Confirm Updating</button>
-                        <button type="button" class="btn btn-dark" onclick="document.location='index.php'">Cancel</button>
+                        <button type="submit" class="btn btn-primary btn-sm">Confirm Updating</button>
+                        <button type="button" class="btn btn-dark btn-sm" onclick="document.location='index.php'">Cancel</button>
                     </form>
                 </div>           
             </div>
