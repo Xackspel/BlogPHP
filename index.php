@@ -70,7 +70,7 @@
             <!-- Start -->
             <?php foreach ($posts as $post):?>
                 <div class="card" style="width: 18rem;">
-                    <img src="<?php echo $post['post_image']?>" class="card-img-top" alt="Code PHP">
+                    <img src="<?php echo $PathFiles.$post['post_image']?>" class="card-img-top" alt="Code PHP">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $post["post_name"]?></h5>
                         <p class="card-text"><?php echo $post["post_description"]?></p>
