@@ -6,4 +6,9 @@
     $DataBaseLogin = "root";
     $DataBasePass ="";
 
+    /* Path to storage where you can save all photos */
+    $PathFiles = "photos/";
+
+    
+
 ?>
