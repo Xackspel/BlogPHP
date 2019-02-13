@@ -8,6 +8,7 @@
 
     /* Path to storage where you can save all photos */
     $PathFiles = "photos/";
+    $DefaultPhoto = $PathFiles."reinis-birznieks-1355047-unsplash.jpg";
 
     
 
