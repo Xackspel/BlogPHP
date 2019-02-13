@@ -76,7 +76,7 @@
             <!--Post Card-->
             <div class="card text-center">
                 <div class="card-header">
-                    <img src="<?php echo $PostImage ?>" class="card-img-top" alt="Code PHP">
+                    <img src="<?php echo $PathFiles.$PostImage ?>" class="card-img-top" alt="Code PHP">
                 </div>
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $NamePost ?></h5>
@@ -99,7 +99,13 @@
                 </div>
                 <div class="card-footer text-muted">
                     <?
-
+                        /* ADD AUTHOR */
+                        /* ADD AUTHOR */
+                        /* ADD AUTHOR */
+                        /* ADD AUTHOR */
+                        /* ADD AUTHOR */
+                        /* ADD AUTHOR */
+                        
                     ?>
                 </div>
             </div>
