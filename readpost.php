@@ -84,11 +84,12 @@
                     <?
                         if($AuthorId == $User_ID){
                             $InsertId = '\'deletepost.php?Id='.$PostId.'';
+
                             $ButHome = '<a href="index.php" class="btn btn-primary btn-sm">&nbsp;&nbsp;Home&nbsp;&nbsp;</a>&nbsp;';
                             $ButEdit = '<a href="editpost.php" class="btn btn-primary btn-sm">&nbsp;&nbsp;Edit&nbsp;&nbsp;</a>&nbsp;';
-                            //$ButDel = '<a href="deletepost.php" class="btn btn-primary btn-sm" onclick="document.location='.$InsertId.'">Delete</a>';
+                            $ButAdd = '<a href="addpost.php" class="btn btn-primary btn-sm">Add Post</a>&nbsp;';
                             $ButDel = '<button type="button" class="btn btn-dark btn-sm" onclick="document.location='.$InsertId.'\'">Delete</button>';
-                            echo $ButHome.$ButEdit.$ButDel;
+                            echo $ButHome.$ButEdit.$ButAdd.$ButDel;
                             
                             //var_dump($ButDel);
                         }
