@@ -1,8 +1,7 @@
 <?php
     session_start();
     include 'engine.php';
-    
-
+    var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,21 +65,24 @@
             <!-- Post Card -->
             <!-- Start -->
             <div class="card text-center">
-                <form action="addandeditpost.php" method="POST">
+                <form action="attachingpost.php" method="POST" enctype="multipart/form-data">
                     <div class="card-header">
                         <label for="exampleFormControlInput1">Please select new photo or leave default</label>
                         <img src="<?php echo $DefaultPhoto?>" class="card-img-top" alt="Code PHP">
-                        <form action="uploadingphoto.php" method="POST" enctype="multipart/form-data">
+                        <!-- Temporary switched off
+                        <form action="attachingpost.php" method="POST" enctype="multipart/form-data">
                             <input name="user_photo" type="file" value="Select photo">
                         </form>
+                        -->
+                        <input name="post_photo" type="file" value="Select photo">
                     </div>
                     <div class="card-body">
                         
-                        <input name="First_Name" class="form-control" placeholder="Post Name" aria-label="Post Name" aria-describedby="basic-addon1">
+                        <input name="Post_Name" class="form-control" placeholder="Post Name" aria-label="Post Name" aria-describedby="basic-addon1">
                         <hr>
-                        <input name="First_Name" class="form-control" placeholder="Post Description" aria-label="Post Description" aria-describedby="basic-addon1">
+                        <input name="Post_Description" class="form-control" placeholder="Post Description" aria-label="Post Description" aria-describedby="basic-addon1">
                         <hr>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Post Text" rows="3"></textarea>
+                        <textarea name="Post_Text" class="form-control" id="exampleFormControlTextarea1" placeholder="Post Text" rows="3"></textarea>
                         
                     </div>
                     <button type="submit" class="btn btn-primary btn-sm">Create Post</button>
