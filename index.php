@@ -68,16 +68,20 @@
             <br>
             <!-- Showing all posts as minipost -->
             <!-- Start -->
-            <?php foreach ($posts as $post):?>
-                <div class="card" style="width: 18rem;">
-                    <img src="<?php echo $PathFiles.$post['post_image']?>" class="card-img-top" alt="Code PHP">
-                    <div class="card-body">
-                        <h5 class="card-title"><?php echo $post["post_name"]?></h5>
-                        <p class="card-text"><?php echo $post["post_description"]?></p>
-                        <button type="button" class="btn btn-dark" onclick="document.location='readpost.php?Id=<?php echo $post['post_id']?>'">Read</button>
-                    </div>
-                </div>
-            <?php endforeach?>
+            <div class="row">
+                <?php foreach ($posts as $post):?>
+                        <div class="col-md-4">
+                            <div class="card" style="width: 18rem;">
+                                <img src="<?php echo $PathFiles.$post['post_image']?>" class="card-img-top" alt="Code PHP">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo $post["post_name"]?></h5>
+                                    <p class="card-text"><?php echo $post["post_description"]?></p>
+                                    <button type="button" class="btn btn-dark" onclick="document.location='readpost.php?Id=<?php echo $post['post_id']?>'">Read</button>
+                                </div>
+                            </div>
+                        </div> 
+                <?php endforeach?>
+            </div>
             <!-- End -->
         </div>
         <br>
