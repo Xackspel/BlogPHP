@@ -18,6 +18,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="photos/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="photos/favicon-16x16.png">
+        <link rel="manifest" href="photos/site.webmanifest">
         <title>PHP Blog</title>
     </head>
     <body>
@@ -25,7 +29,7 @@
             <div class="bg-dark p-4">
                 <div class=row>
                     <div class="col-sm">
-                        <img src="http://marlindev.ru/img/new/logo.svg" alt="Marlin dev school" title="Marlin dev school">
+                        <img src="photos/android-chrome-512x512.png" alt="Blog Logo" title="Blog by PHP" width="40">
                     </div>
                     <div class="col-sm">
                         <h2 class="text-right" style="color:white">
