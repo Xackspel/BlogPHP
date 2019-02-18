@@ -8,10 +8,10 @@
     $post_description = $_POST['Post_Description']; // Take post description and assign to varriable;
     $post_text = $_POST['Post_Text']; // Take post text and assign to varriable;
     $author_id = $_SESSION['userid']; // Take user id and assign to varriable;
-    $post_image = $_FILES['name'];
+    $post_image = $_FILES['post_photo']['name'];
     /* Post details */
     /* End */
-
+    
     /* Move post image to local storage */
     /* Start */
     if(isset($post_image)){
@@ -26,6 +26,5 @@
     $pdo = new PDO($MySQL_Path, $DataBaseLogin, $DataBasePass); // Connection to Data Base;
     $send_data = $pdo -> query("INSERT INTO posts (post_id, post_name, post_description, post_text, author_id, post_image) VALUES (NULL, '$post_name', '$post_description', '$post_text', '$author_id', '$post_image')");
     header('Location:index.php'); // Once all details been sent, move user to main page;
-    //var_dump($_POST, $_FILES, $_SESSION);
-    //var_dump($post_image);
+
 ?>
