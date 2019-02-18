@@ -10,6 +10,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="photos/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="photos/favicon-16x16.png">
+        <link rel="manifest" href="photos/site.webmanifest">
         <title>PHP Blog</title>
     </head>
     <body>
@@ -17,7 +21,7 @@
             <div class="bg-dark p-4">
                 <div class=row>
                     <div class="col-sm">
-                        <img src="http://marlindev.ru/img/new/logo.svg" alt="Marlin dev school" title="Marlin dev school">
+                        <img src="photos/android-chrome-512x512.png" alt="Blog Logo" title="Blog by PHP" width="40">
                     </div>
                     <div class="col-sm">
                         <h2 class="text-right" style="color:white">
@@ -69,14 +73,14 @@
                     <div class="card-header">
                         <label for="exampleFormControlInput1">Please select new photo or leave default</label>
                         <img src="<?php echo $DefaultPhoto?>" class="card-img-top" alt="Code PHP">
-                        <input name="post_photo" type="file" value="Select photo">
+                        <input name="post_photo" type="file">
                     </div>
                     <div class="card-body">
                         <input name="Post_Name" class="form-control" placeholder="Post Name" aria-label="Post Name" aria-describedby="basic-addon1">
                         <hr>
                         <input name="Post_Description" class="form-control" placeholder="Post Description" aria-label="Post Description" aria-describedby="basic-addon1">
                         <hr>
-                        <textarea name="Post_Text" class="form-control" id="exampleFormControlTextarea1" placeholder="Post Text" rows="3"></textarea>
+                        <textarea name="Post_Text" class="form-control" id="exampleFormControlTextarea1" placeholder="Post Text" rows="30"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary btn-sm">Create Post</button>
                 </form>
