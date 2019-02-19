@@ -9,7 +9,7 @@
     $SecondName = $received_user['secondname'];
     $Email = $received_user['email'];
     $UserPhoto = $received_user['userphoto'];
-    //var_dump($received_user); // Diagnostic tool;
+    //var_dump($_SESSION); // Diagnostic tool;
 ?>
 <!DOCTYPE html>
     <html lang="en">
