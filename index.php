@@ -1,12 +1,11 @@
 <?php
     session_start(); // Start seesion;
     include 'engine.php';
-    unset($_SESSION['postid']);
-    
     $pdo = new PDO($MySQL_Path, $DataBaseLogin, $DataBasePass); // Connection to Data Base;
     $statement = $pdo -> query("SELECT * FROM posts"); // Selection all posts;
     $posts = $statement -> fetchall(PDO::FETCH_ASSOC); // Transforming posts to array;
-    //var_dump($_SESSION); // Diagnostick line; For running remove // before Var_dump();
+    $User_ID = $_SESSION['userid'];
+    //var_dump($posts); // Diagnostick line; For running remove // before Var_dump();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,7 +82,19 @@
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $post["post_name"]?></h5>
                                 <p class="card-text"><?php echo $post["post_description"]?></p>
-                                <button type="button" class="btn btn-dark" onclick="document.location='readpost.php?Id=<?php echo $post['post_id']?>'">Read</button>
+                                <button type="button" class="btn btn-primary btn-sm" onclick="document.location='readpost.php?Id=<?php echo $post['post_id']?>'">Read</button>
+                                <?
+                                    $AuthorId = $post['author_id'];
+                                    if($AuthorId == $User_ID){
+                                        $InsertId = '\'deletepost.php?Id='.$PostId.'';
+                                        $EditpostById = '\'editpost.php?Id='.$PostId.'';
+
+                                        $ButEdit = '<button type="button" class="btn btn-primary btn-sm"onclick="document.location='.$EditpostById.'\'">Edit</button>&nbsp;';
+                                        $ButAdd = '<a href="addpost.php" class="btn btn-primary btn-sm">New</a>&nbsp;';
+                                        $ButDel = '<button type="button" class="btn btn-dark btn-sm" onclick="document.location='.$InsertId.'\'">Delete</button>';
+                                        echo $ButEdit.$ButAdd.$ButDel;
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div> 
