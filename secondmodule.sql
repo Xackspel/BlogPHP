@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Час створення: Лют 19 2019 р., 19:17
+-- Час створення: Лют 19 2019 р., 19:44
 -- Версія сервера: 8.0.12
 -- Версія PHP: 7.2.10
 
@@ -72,7 +72,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`Id`, `firstname`, `secondname`, `login`, `email`, `password`, `userphoto`) VALUES
 (1, 'Aleksey', 'Zhuk', 'Aleksey', 'aleksey@mail.com', '722C53076934353B6179953B622A4FA9', ''),
 (2, 'Dima', 'Zhuk', 'Dimka', 'dimka@mail.com', '489d460f0a77910a5d019701859d50d7', 'titanic_647_041416113640.jpg'),
-(8, 'Lena', 'Zhuk', 'Lenchik', 'lena@mail.com', '73586c09cf0d2e898aaa75d456f4e044', ''),
+(8, 'Lena', 'Zhuk', 'Lenchik', 'lena@mail.com', '3616A35765CDD0B13B162BDCA17374AA', ''),
 (9, 'Denis', 'Zhuk', 'Denchik', 'denchik@mail.com', 'A3B8EB6FAAF230BD0944847C527D30BF', 'denis.png');
 
 --
