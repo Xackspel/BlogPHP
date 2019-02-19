@@ -16,7 +16,7 @@
 
     /* Move post image to local storage if user attached new one */
     /* Start */
-   if(isset($post_image)){
+   if(!empty($post_image)){
        $OriginalPhotoName = basename($_FILES['post_photo']['name']); // Take full filename with extension; 
        move_uploaded_file($_FILES['post_photo']['tmp_name'], $PathFiles.$OriginalPhotoName); // Move file to photos folder;    
    }else{
