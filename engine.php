@@ -11,6 +11,8 @@
     $DefaultPhotoName = "reinis-birznieks-1355047-unsplash.jpg";
     $DefaultPhoto = $PathFiles.$DefaultPhotoName;
 
-    /*  */
+    /* Setup default user photo */
+    $Avatar = "default_user_photo.jpg";
+    $DefaultUserPhoto = $PathFiles.$Avatar;
 
 ?>
