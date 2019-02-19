@@ -9,6 +9,7 @@
     $post_name = $_POST['Post_Name']; // Take post name and assign to varriable;
     $post_description = $_POST['Post_Description']; // Take post description and assign to varriable;
     $post_text = $_POST['Post_Text']; // Take post text and assign to varriable;
+    $post_image = $_FILES['post_photo']['name']; // Take photo name and assign to varriable;
     //var_dump($_SESSION, $_POST, $_FILES);
     /* Post details */
     /* End */
