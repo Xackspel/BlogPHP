@@ -5,7 +5,8 @@
     $statement = $pdo -> query("SELECT * FROM posts"); // Selection all posts;
     $posts = $statement -> fetchall(PDO::FETCH_ASSOC); // Transforming posts to array;
     $User_ID = $_SESSION['userid'];
-    //var_dump($posts); // Diagnostick line; For running remove // before Var_dump();
+    
+    var_dump($posts); // Diagnostick line; For running remove // before Var_dump();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,6 +85,7 @@
                                 <p class="card-text"><?php echo $post["post_description"]?></p>
                                 <button type="button" class="btn btn-primary btn-sm" onclick="document.location='readpost.php?Id=<?php echo $post['post_id']?>'">Read</button>
                                 <?
+                                    $PostId = $post['post_id'];
                                     $AuthorId = $post['author_id'];
                                     if($AuthorId == $User_ID){
                                         $InsertId = '\'deletepost.php?Id='.$PostId.'';
