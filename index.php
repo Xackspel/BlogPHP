@@ -6,7 +6,7 @@
     $posts = $statement -> fetchall(PDO::FETCH_ASSOC); // Transforming posts to array;
     $User_ID = $_SESSION['userid'];
     
-    var_dump($posts); // Diagnostick line; For running remove // before Var_dump();
+    //var_dump($posts); // Diagnostick line; For running remove // before Var_dump();
 ?>
 <!DOCTYPE html>
 <html lang="en">
