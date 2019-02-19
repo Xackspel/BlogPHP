@@ -9,7 +9,7 @@
     $SecondName = $received_user['secondname'];
     $Email = $received_user['email'];
     $UserPhoto = $received_user['userphoto'];
-    //var_dump($UserPhoto, $PathFiles); // Diagnostic tool;
+    //var_dump($received_user); // Diagnostic tool;
 ?>
 <!DOCTYPE html>
     <html lang="en">
@@ -18,6 +18,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="photos/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="photos/favicon-16x16.png">
@@ -28,8 +29,8 @@
         <div class="container">
             <div class="bg-dark p-4">
                 <div class=row>
-                    <div class="col-sm">
-                        <img src="photos/android-chrome-512x512.png" alt="Blog Logo" title="Blog by PHP" width="40">
+                    <div class="col-sm" style="font-family: 'Audiowide', cursive; color:white">
+                        <h2>PHP Blog<h2>
                     </div>
                     <div class="col-sm">
                         <h2 class="text-right" style="color:white">
@@ -82,11 +83,11 @@
                     <!--User Profile Section-->
                     <!-- Start -->
                     <?
-                        if(($UserPhoto!==0)){
+                        if(!empty($UserPhoto)){
                             echo '<img src="'.$PathFiles.$UserPhoto.'" alt="..." class="img-thumbnail" width="200px">';
                         }
                         else{
-                            echo '<img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" alt="..." class="img-thumbnail" width="200px">';
+                            echo '<img src="'.$DefaultUserPhoto.'" alt="..." class="img-thumbnail" width="200px">';
                         }
                     ?>
 
