@@ -15,6 +15,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="photos/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="photos/favicon-16x16.png">
@@ -25,8 +26,8 @@
         <div class="container">
             <div class="bg-dark p-4">
                 <div class=row>
-                    <div class="col-sm">
-                        <img src="photos/android-chrome-512x512.png" alt="Blog Logo" title="Blog by PHP" width="40">
+                    <div class="col-sm" style="font-family: 'Audiowide', cursive; color:white">
+                        <h2>PHP Blog<h2>
                     </div>
                     <div class="col-sm">
                         <h2 class="text-right" style="color:white">
@@ -58,7 +59,7 @@
                                     echo '<li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>';
                                 }
                                 else{
-                                    echo '<li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li><li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>';    
+                                    echo '<li class="nav-item"><li class="nav-item"><a class="nav-link" href="addpost.php">Create Post</a></li><a class="nav-link" href="profile.php">Profile</a></li><li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>';    
                                 }
                             ?>
                             <!-- End -->
@@ -75,16 +76,17 @@
             <!-- Start -->
             <div class="row">
                 <?php foreach ($posts as $post):?>
-                        <div class="col-md-4">
-                            <div class="card" style="width: 18rem;">
-                                <img src="<?php echo $PathFiles.$post['post_image']?>" class="card-img-top" alt="Code PHP">
-                                <div class="card-body">
-                                    <h5 class="card-title"><?php echo $post["post_name"]?></h5>
-                                    <p class="card-text"><?php echo $post["post_description"]?></p>
-                                    <button type="button" class="btn btn-dark" onclick="document.location='readpost.php?Id=<?php echo $post['post_id']?>'">Read</button>
-                                </div>
+                    <div class="col-md-4">
+                        <br>
+                        <div class="card" style="width: 18rem;">
+                            <img src="<?php echo $PathFiles.$post['post_image']?>" class="card-img-top" alt="Code PHP" height="170px">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $post["post_name"]?></h5>
+                                <p class="card-text"><?php echo $post["post_description"]?></p>
+                                <button type="button" class="btn btn-dark" onclick="document.location='readpost.php?Id=<?php echo $post['post_id']?>'">Read</button>
                             </div>
-                        </div> 
+                        </div>
+                    </div> 
                 <?php endforeach?>
             </div>
             <!-- End -->
