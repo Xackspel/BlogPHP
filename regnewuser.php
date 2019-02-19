@@ -1,26 +1,6 @@
 <?php
+    session_start();
     include 'engine.php';
-
-    /* New User Registration */
-    if(isset($_POST['FirstName']) && isset($_POST['SecondName']) && isset($_POST['Login']) && isset($_POST['Email']) && isset($_POST['Password'])){
-        $FirstName = $_POST['FirstName'];
-        $SecondName = $_POST['SecondName'];
-        $Login = $_POST['Login'];
-        $Email = $_POST['Email'];
-        $Password = $_POST['Password'];
-        $RePassword = $_POST['RePassword'];
-
-        if($Password == $RePassword){
-            $Password_MD5 = MD5($Password); // Convert Password to MD5 hash;
-            $pdo = new PDO($MySQL_Path, $DataBaseLogin, $DataBasePass); // Connection to Data Base;
-            $send_data = $pdo -> query("INSERT INTO users (Id, firstname, secondname, login, email, password, userphoto) VALUES (NULL, '$FirstName', '$SecondName', '$Login', '$Email', '$Password_MD5', '')");
-            echo "Congratulations, you have registered";
-        }
-        else{
-            var_dump($_POST);
-            echo "Wrong Password, please retry";
-        }
-    }   
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,17 +9,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
     <title>PHP Blog</title>
 </head>
 <body>
     <div class="container">
         <div class="bg-dark p-4">
             <div class=row>
-                 <div class="col-sm">
-                    <img src="http://marlindev.ru/img/new/logo.svg" alt="Marlin dev school" title="Marlin dev school">
+                <div class="col-sm" style="font-family: 'Audiowide', cursive; color:white">
+                    <h2>PHP Blog<h2>
                 </div>
                 <div class="col-sm">
-                    <font color="white"><h2 class="text-right" color="white">Aleksey Zhuk [ 1 ]</h2></font>
+                    <h2 class="text-right" style="color:white">
+                    <!-- Showing Congratulations or User Name if he is authorized -->
+                    <!-- Start -->
+                        <?php
+                            if (!isset($_SESSION['userlogin'])){
+                                echo "Wellcome!";
+                            }
+                            else{
+                                echo $_SESSION['userlogin'];    
+                            }
+                        ?>
+                    <!-- End -->
+                    </h2>
                 </div>
             </div>
             <nav class="navbar navbar-dark bg-dark">
@@ -69,7 +62,7 @@
         <div class="card bg-light">
             <article class="card-body mx-auto" style="max-width: 400px;">
                 <h4 class="card-title mt-3 text-center">Create Account</h4>
-                <form action="regnewuser.php" method="post">
+                <form action="registeringnewuser.php" method="post">
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-user"></i> </span>
