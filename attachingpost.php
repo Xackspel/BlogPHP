@@ -25,6 +25,5 @@
 
     $pdo = new PDO($MySQL_Path, $DataBaseLogin, $DataBasePass); // Connection to Data Base;
     $send_data = $pdo -> query("INSERT INTO posts (post_id, post_name, post_description, post_text, author_id, post_image) VALUES (NULL, '$post_name', '$post_description', '$post_text', '$author_id', '$post_image')");
-    //header('Location:index.php'); // Once all details been sent, move user to main page;
-    
+    header('Location:index.php'); // Once all details been sent, move user to main page;
 ?>
