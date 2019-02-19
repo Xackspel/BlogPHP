@@ -15,19 +15,20 @@
         else{
             $_SESSION['userid'] = $received_user[0]['Id'];
             $_SESSION['userlogin'] = $received_user[0]['login'];
-            //echo 'Congratulations, you have been authorized!!!';
             header('Location:index.php');
         }
     }
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="photos/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="photos/favicon-16x16.png">
         <link rel="manifest" href="photos/site.webmanifest">
@@ -37,13 +38,13 @@
         <div class="container">
             <div class="bg-dark p-4">
                 <div class=row>
+                    <div class="col-sm" style="font-family: 'Audiowide', cursive; color:white">
+                        <h2>PHP Blog<h2>
+                    </div>
                     <div class="col-sm">
-                        <img src="photos/android-chrome-512x512.png" alt="Blog Logo" title="Blog by PHP" width="40">
-                </div>
-                <div class="col-sm">
-                    <h2 class="text-right" style="color:white">
-                        <!-- Showing Congratulations or User Name if he is authorized -->
-                        <!-- Start -->
+                        <h2 class="text-right" style="color:white">
+                            <!-- Showing Congratulations or User Name if he is authorized -->
+                            <!-- Start -->
                             <?php
                                 if (!isset($_SESSION['userlogin'])){
                                     echo "Wellcome!";
@@ -52,8 +53,9 @@
                                     echo $_SESSION['userlogin'];    
                                 }
                             ?>
-                        <!-- End -->
-                    </h2>
+                            <!-- End -->
+                        </h2>
+                    </div>
                 </div>
             </div>
             <nav class="navbar navbar-dark bg-dark">
