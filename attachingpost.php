@@ -4,10 +4,10 @@
 
     /* Post details */
     /* Start */
-    $post_name = $_POST['Post_Name']; // Take post name and assign to varriable;
-    $post_description = $_POST['Post_Description']; // Take post description and assign to varriable;
-    $post_text = $_POST['Post_Text']; // Take post text and assign to varriable;
-    $author_id = $_SESSION['userid']; // Take user id and assign to varriable;
+    $post_name = $_POST['Post_Name']; // Take post name and assign to variable;
+    $post_description = $_POST['Post_Description']; // Take post description and assign to variable;
+    $post_text = $_POST['Post_Text']; // Take post text and assign to variable;
+    $author_id = $_SESSION['userid']; // Take user id and assign to variable;
     $post_image = $_FILES['post_photo']['name'];
     /* Post details */
     /* End */
